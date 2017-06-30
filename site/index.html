@@ -409,12 +409,11 @@ Come visit our forum to find answers!
     var contentb = document.getElementById('rssb');
 
     function showFeeda(data) {
-        
 	var dict = {};
 	var output = '';
     	for(var i=0;i<data.items.length;++i){
-        	var str = data.items[i].title		
-		str = str.replace(/Re: /gm,'');	        
+        	var str = data.items[i].title
+		str = str.replace(/Re: /gm,'');
 		if(dict[str] === undefined) {
 			dict[str] = new Object();
 			dict[str].count = 0;
@@ -425,9 +424,9 @@ Come visit our forum to find answers!
 	    	dict[str].content = jQuery('<p>' + data.items[i].content + '</p>').text();
 		dict[str].count++;
 	}
-	    
+
 	var i = 0;
-	    
+
 	for(key in dict){
             output += '<p>' + dict[key].date + '</p>';
 	    if(dict[key].count <= 3) {
@@ -437,25 +436,23 @@ Come visit our forum to find answers!
 	    }
             output += '<a href="' + dict[key].href + '">' + dict[key].text + '</a> (' + dict[key].count + ')<br /><br />';
 	    output += dict[str].content + '<br /><br />';
-		
+
 	    if(i++ > 19) {
 	      break;
-	    }		
-        }	
-	contenta.innerHTML = output;    	
+	    }
+        }
+	contenta.innerHTML = output;
     }
-	
+
     function showFeedb(data){
-       
-	
 	var output = '';
         for(var i=0;i<data.items.length;++i){
             output += '<p><a href="' +
             data.items[i].link + '" >' +
             data.items[i].pubDate + ' ' + data.items[i].author + '</a></p>';
-            output += data.items[i].title + '<br /><br />';                       
-        }	
-	contentb.innerHTML = output;  
+            output += data.items[i].title + '<br /><br />';
+        }
+	contentb.innerHTML = output;
     }
 </script>
 
